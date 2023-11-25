@@ -7,10 +7,8 @@
 #include <utility>
 
 
-resistor::resistor(int x, std::string y){
-    resistance = x;
-    smd_size = std::move(y);
-}
+resistor::resistor(int resistance, std::string smd_size):resistance(resistance), smd_size(std::move(smd_size)){}
+
 //Function that calculated the needed resistance base on a power_in object and a consumer
 int resistor::rescalc(const power_in& usb, int consumer){
     resistance = (usb.voltage-consumer)*usb.amperage;

@@ -14,7 +14,7 @@ class caps {
 
 
 public:
-    caps(int x, std::string y);
+    caps(int capacitance, std::string size);
     void cap_select();
     friend std::ostream &operator<<(std::ostream &os, const caps &caps);
 

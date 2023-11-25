@@ -6,10 +6,8 @@
 
 #include <utility>
 
-caps::caps(int x, std::string y){
-    capacitance = x;
-    size = std::move(y);
-}
+caps::caps(int capacitance, std::string size):capacitance(capacitance), size(std::move(size)){}
+
 
 void caps::cap_select(){
 

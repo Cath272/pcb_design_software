@@ -10,7 +10,7 @@ using namespace std;
 
 
 int main() {
-
+    resistor res1(120, "0805");
     vector<std::string> components_list;
     int comp_num;
     std::string aux;
@@ -55,6 +55,8 @@ int main() {
         std::cin>>aux;
         components_list.push_back(aux);
     }
+    res1.rescalc(usb3, 2);
+    caps cap1(20, "0450");
     return 0;
 
 }
