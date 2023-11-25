@@ -13,21 +13,23 @@ class diode {
 
 protected:
     std::string  smdSize;
-    float  fwVoltage  = 0.6;
-    float  fwCurrent{};
+    double  fwVoltage  = 0.6;
+    double  fwCurrent{};
 public:
     friend std::ostream &operator<<(std::ostream &os, const diode &diode);
     explicit diode(std::string smdSize);
 
-    [[nodiscard]] virtual float PowerSum() const;
+    [[nodiscard]] virtual double PowerSum() const;
 };
 
 class zener_diode  : diode{
 //Zener_diode (subclass of Diode) - allows the flow of current "backwards"
-    float  bw_voltage;
-    float  bw_amperage;
+    double  bw_voltage;
+    double  bw_amperage;
 public:
-    zener_diode(const std::string &smdSize, float bwVoltage, float bwAmperage);
+    zener_diode(const std::string &smdSize, double bwVoltage, double bwAmperage);
+
+    friend std::ostream &operator<<(std::ostream &os, const zener_diode &diode);
 
 };
 
@@ -41,7 +43,7 @@ public:
 
     friend std::ostream &operator<<(std::ostream &os, const LED &led);
     void  set_led();
-     [[nodiscard]] float PowerSum() const override;
+     [[nodiscard]] double PowerSum() const override;
 
 
 };
