@@ -1,7 +1,7 @@
 #include <iostream>
-#include "headers\caps.h"
-#include "headers\resistor.h"
-#include "headers\power_in.h"
+#include "headers/caps.h"
+#include "headers/resistor.h"
+#include "headers/power_in.h"
 #include "headers/diode.h"
 #include <stdexcept>
 #include <vector>

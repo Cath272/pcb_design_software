@@ -16,15 +16,19 @@ std::ostream &operator<<(std::ostream &os, const diode &diode) {
 }
 
 //Function that calculates the Power consumed by the diode
-float diode::PowerSum() const{
+double diode::PowerSum() const{
     return fwVoltage * fwCurrent;
 }
 
 
-zener_diode::zener_diode(const std::string &smdSize, float bwVoltage, float bwAmperage)
+zener_diode::zener_diode(const std::string &smdSize, double bwVoltage, double bwAmperage)
         : diode(smdSize), bw_voltage(bwVoltage), bw_amperage(bwAmperage) {}
 
-
+std::ostream &operator<<(std::ostream &os, const zener_diode &diode) {
+    os << static_cast<const diode &>(diode) << " bw_voltage: " << diode.bw_voltage << " bw_amperage: "
+       << diode.bw_amperage;
+    return os;
+}
 
 
 LED::LED(const std::string &smdSize) : diode(smdSize), color("none") {}
@@ -35,8 +39,8 @@ std::ostream &operator<<(std::ostream &os, const LED &led) {
 }
 //Function that calculates the Power consumed by the LED
 
-float LED::PowerSum() const {
-    const float fixedCurrent = 0.02;
+double LED::PowerSum() const {
+    const double fixedCurrent = 0.02;
     return fwVoltage * fixedCurrent;
 }
 
