@@ -25,7 +25,7 @@ zener_diode::zener_diode(const std::string &smdSize, double bwVoltage, double bw
         : diode(smdSize), bw_voltage(bwVoltage), bw_amperage(bwAmperage) {}
 
 std::ostream &operator<<(std::ostream &os, const zener_diode &diode) {
-    os << static_cast<const diode &>(diode) << " bw_voltage: " << diode.bw_voltage << " bw_amperage: "
+    os << static_cast<const class diode &>(diode) << " bw_voltage: " << diode.bw_voltage << " bw_amperage: "
        << diode.bw_amperage;
     return os;
 }
