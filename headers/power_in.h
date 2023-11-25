@@ -13,7 +13,8 @@ class power_in {
     int amperage;
 public:
     power_in( std::string x, int y, int z);
-    power_in(const power_in& usb);
+
+    [[maybe_unused]] power_in(const power_in& usb);
     ~power_in();
     friend std::ostream &operator<<( std::ostream &output, const power_in &PD );
     friend class resistor;

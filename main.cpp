@@ -57,6 +57,7 @@ int main() {
     }
     res1.rescalc(usb3, 2);
     caps cap1(20, "0450");
+    cap1.cap_select();
     return 0;
 
 }

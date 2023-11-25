@@ -8,12 +8,8 @@
 
 power_in::power_in( std::string x, int y, int z): plug_type(std::move(x)),voltage(y),amperage(z){}
 
-power_in::power_in(const power_in& usb)
-{
-    plug_type = usb.plug_type;
-    voltage = usb.voltage;
-    amperage = usb.amperage;
-}
+[[maybe_unused]] power_in::power_in(const power_in& usb): plug_type(usb.plug_type),voltage(usb.voltage),amperage(usb.amperage){}
+
 power_in::~power_in(){
     std::cout<<"\n Powering off";
 }
