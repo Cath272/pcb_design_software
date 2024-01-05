@@ -29,6 +29,3 @@ void PCBFactory::manufacture(const std::string& size, const std::string& color) 
     }
 }
 
-PCBFactory::PCBFactory(PCBStrategy *pcbStrategy) : pcbStrategy(pcbStrategy) {}
-
-PCBStrategy::PCBStrategy() = default;

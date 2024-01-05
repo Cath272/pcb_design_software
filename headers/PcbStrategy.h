@@ -7,8 +7,6 @@
 
 class PCBStrategy {
 public:
-    PCBStrategy();
-
     virtual void produce(const std::string& size, const std::string& color) = 0;
 };
 
@@ -32,8 +30,6 @@ private:
     PCBStrategy* pcbStrategy;
 
 public:
-    explicit PCBFactory(PCBStrategy *pcbStrategy);
-
     void setPCBStrategy(PCBStrategy* strategy);
     void manufacture(const std::string& size, const std::string& color);
 };
