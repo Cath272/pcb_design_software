@@ -17,5 +17,6 @@ int main() {
     power_in<int> usb2 ("usb_c", 5, 1);
     cout<<usb2;
     OpenWindow();
+
     return 0;
 }
