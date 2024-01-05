@@ -29,3 +29,5 @@ void PCBFactory::manufacture(const std::string& size, const std::string& color) 
     }
 }
 
+PCBFactory::PCBFactory() = default;
+

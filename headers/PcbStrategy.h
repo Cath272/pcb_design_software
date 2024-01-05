@@ -27,9 +27,11 @@ public:
 
 class PCBFactory {
 private:
-    PCBStrategy* pcbStrategy;
+    PCBStrategy* pcbStrategy{};
 
 public:
+    PCBFactory();
+
     void setPCBStrategy(PCBStrategy* strategy);
     void manufacture(const std::string& size, const std::string& color);
 };
