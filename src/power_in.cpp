@@ -44,3 +44,5 @@ void power_in<T>::port_select() {
 // Explicit instantiation for int (you can add more instantiations if needed)
 template class power_in<int>;
 template class power_in<float>;
+
+template class power_in<double>;

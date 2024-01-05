@@ -11,6 +11,8 @@ enum DiodeType {
 
 class DiodeFactory {
 public:
+    DiodeFactory();
+
     static diode* createDiode(DiodeType diodeType, const std::string& smdSize, double bwVoltage = 0.0, double bwAmperage = 0.0);
 };
 

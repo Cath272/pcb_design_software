@@ -22,3 +22,5 @@ diode* DiodeFactory::createDiode(DiodeType diodeType, const std::string& smdSize
             throw std::logic_error("Invalid Diode Type");
     }
 }
+
+DiodeFactory::DiodeFactory() = default;
