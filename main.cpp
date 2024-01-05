@@ -17,13 +17,10 @@ int main() {
     power_in<int> usb2 ("usb_c", 5, 1);
     cout<<usb2;
     OpenWindow();
-
-    /*
     resistor res1(120, "0805");
-    vector<std::string> components_list;
-    int comp_num;
-    std::string aux;
-
+    res1.rescalc(usb2, 2);
+    caps cap1(20, "0450");
+    cap1.cap_select();
     //Pointers to PowersSum function
     diode diode1("0805");
     cout<<diode1;
@@ -37,6 +34,14 @@ int main() {
 
     cout<<"\n"<<diode1Pointer->PowerSum();
     cout<<"\n"<<led1Pointer->PowerSum();
+    return 0;
+    /*
+
+    vector<std::string> components_list;
+    int comp_num;
+    std::string aux;
+
+
 
 
     LED led2("0805");
@@ -64,9 +69,6 @@ int main() {
         std::cin>>aux;
         components_list.push_back(aux);
     }
-    res1.rescalc(usb3, 2);
-    caps cap1(20, "0450");
-    cap1.cap_select();
-    return 0;
+
     */
 }
