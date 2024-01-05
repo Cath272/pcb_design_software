@@ -3,13 +3,28 @@
 #include "headers/resistor.h"
 #include "headers/power_in.h"
 #include "headers/diode.h"
+#include "headers/diodeFactory.h"
+
+
+
 #include <stdexcept>
 #include <vector>
+#include "sfml/graphics.h"
 using namespace std;
 
 
 
 int main() {
+
+
+
+    power_in<float> usb3 ("usb_c", 5, 1.2);
+    cout<<usb3<<"\n";
+    power_in<int> usb2 ("usb_c", 5, 1.2);
+    cout<<usb2;
+    OpenWindow();
+
+    /*
     resistor res1(120, "0805");
     vector<std::string> components_list;
     int comp_num;
@@ -31,7 +46,7 @@ int main() {
 
 
     LED led2("0805");
-    power_in usb3 ("usb_c", 5, 1);
+
 
     //set_led exception test
     try {
@@ -59,5 +74,5 @@ int main() {
     caps cap1(20, "0450");
     cap1.cap_select();
     return 0;
-
+    */
 }

@@ -2,7 +2,7 @@
 // Created by Beaver on 11/23/2023.
 //
 
-#include "diode.h"
+#include "../headers/diode.h"
 #include "iostream"
 #include <utility>
 
@@ -74,4 +74,3 @@ void LED::set_led(){
 
 
 
-Photodiode::Photodiode(const std::string &smdSize, std::string material) : diode(smdSize), material(std::move(material)) {}

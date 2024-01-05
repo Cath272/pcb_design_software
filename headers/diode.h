@@ -22,7 +22,7 @@ public:
     [[nodiscard]] virtual double PowerSum() const;
 };
 
-class zener_diode  : diode{
+class zener_diode  : public diode{
 //Zener_diode (subclass of Diode) - allows the flow of current "backwards"
     double  bw_voltage;
     double  bw_amperage;
@@ -33,7 +33,7 @@ public:
 
 };
 
-class LED  : diode{
+class LED  : public diode{
 //Light emitting diode (subclass of Diode) - emits light when current flows through  it
     std::string color;
 
@@ -48,12 +48,6 @@ public:
 
 };
 
-class Photodiode  : diode{
-//Photodiode - produces current when it absorbs photons
- std::string material;
-public:
-    Photodiode(const std::string &smdSize, std::string material);
-};
 
 
 #endif //OOP_DIODE_H
