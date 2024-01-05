@@ -29,3 +29,4 @@ void PCBFactory::manufacture(const std::string& size, const std::string& color) 
     }
 }
 
+PCBStrategy::PCBStrategy() = default;

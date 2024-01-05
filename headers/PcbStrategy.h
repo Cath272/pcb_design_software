@@ -7,6 +7,8 @@
 
 class PCBStrategy {
 public:
+    PCBStrategy();
+
     virtual void produce(const std::string& size, const std::string& color) = 0;
 };
 
