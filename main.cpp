@@ -3,12 +3,6 @@
 #include "headers/resistor.h"
 #include "headers/power_in.h"
 #include "headers/diode.h"
-#include "headers/diodeFactory.h"
-
-
-
-#include <stdexcept>
-#include <vector>
 #include "sfml/graphics.h"
 using namespace std;
 
@@ -20,7 +14,7 @@ int main() {
 
     power_in<float> usb3 ("usb_c", 5, 1.2);
     cout<<usb3<<"\n";
-    power_in<int> usb2 ("usb_c", 5, 1.2);
+    power_in<int> usb2 ("usb_c", 5, 1);
     cout<<usb2;
     OpenWindow();
 

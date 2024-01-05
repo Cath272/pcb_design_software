@@ -2,17 +2,17 @@
 // Created by Beaver on 12/4/2023.
 //
 
-#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include "button.h"
 #include <thread>
 #include "../headers/diodeFactory.h"
-#include "../headers/pcbStrategy.h"
+#include "../headers/PcbStrategy.h"
+#include "../headers/power_in.h"
 #include <string>
 
 #include "graphics.h"
 void OpenWindow(){
-    bool mousebut = 0;
+    bool mousebut = false;
     std::string sizepcb;
     sf::Font arial;
     arial.loadFromFile("../sfml/Arial.ttf");
@@ -44,6 +44,10 @@ void OpenWindow(){
     btn2.setFont(arial);
     btn2.setPosition({50,300});
 
+    Button btn3("Port Select",zerner_img, {200,50}, 18, sf::Color::Green, sf::Color::Black,false);
+    btn3.setFont(arial);
+    btn3.setPosition({50,400});
+
     Button pcbBig("bigPcbRed",blanktext, {100,50}, 16, sf::Color::Red, sf::Color::Black,true);
     pcbBig.setFont(arial);
     pcbBig.setPosition({300,50});
@@ -71,10 +75,9 @@ void OpenWindow(){
     pcbSmallBoard.setFillColor(sf::Color::Blue);
     pcbSmallBoard.setPosition({300,150});
 
-    DiodeFactory diodeFactory;
     window.setFramerateLimit(60);
 
-    PCBFactory factory;
+    PCBFactory factory{};
 
 
 
@@ -88,7 +91,7 @@ void OpenWindow(){
     while (window.isOpen())
     {
         // check all the window's events that were triggered since the last iteration of the loop
-        sf::Event event;
+        sf::Event event{};
         while (window.pollEvent(event))
             switch (event.type) {
                 case sf::Event::Closed:
@@ -101,6 +104,8 @@ void OpenWindow(){
                         btn1.setBackColor(sf::Color::White);
                 }else if(btn2.isMouseOver(window)){
                     btn2.setBackColor(sf::Color::White);
+                }else if(btn3.isMouseOver(window)){
+                    btn3.setBackColor(sf::Color::White);
                 }else if(pcbBig.isMouseOver(window)){
                     pcbBig.setBackColor(sf::Color::White);
                 }else if(pcbMed.isMouseOver(window)){
@@ -111,6 +116,7 @@ void OpenWindow(){
                     btn.setBackColor(sf::Color::Green);
                     btn1.setBackColor(sf::Color::Green);
                     btn2.setBackColor(sf::Color::Green);
+                    btn3.setBackColor(sf::Color::Green);
                     pcbBig.setBackColor(sf::Color::Red);
                     pcbMed.setBackColor(sf::Color::Green);
                     pcbSmall.setBackColor(sf::Color::Blue);
@@ -118,19 +124,20 @@ void OpenWindow(){
                 break;
             case sf::Event::MouseButtonPressed:
                 if(btn.isMouseOver(window)){
-                    diode* simpleDiode = diodeFactory.createDiode(D_DIODE, "SMD-123");
+                    diode* simpleDiode = DiodeFactory::createDiode(D_DIODE, "SMD-123");
                     std::cout << *simpleDiode << std::endl;
-                    delete simpleDiode;
                 }else if(btn1.isMouseOver(window)){
-                    diode* simpleDiode = diodeFactory.createDiode(D_LED, "SMD-123");
+                    diode* simpleDiode = DiodeFactory::createDiode(D_LED, "SMD-123");
                     std::cout << *simpleDiode << std::endl;
-                    delete simpleDiode;
                 }else if(btn2.isMouseOver(window)){
-                    diode* simpleDiode = diodeFactory.createDiode(D_ZENER, "SMD-123");
+                    diode* simpleDiode = DiodeFactory::createDiode(D_ZENER, "SMD-123");
                     std::cout << *simpleDiode << std::endl;
-                    delete simpleDiode;
-                    mousebut = 1;
+                    mousebut = true;
 
+
+                }else if(btn3.isMouseOver(window)){
+                    power_in<float> usb2 ("usb_c", 5, 1.2);
+                    usb2.port_select();
 
                 }else if(pcbBig.isMouseOver(window)){
                     sizepcb = "30x30";
@@ -151,16 +158,16 @@ void OpenWindow(){
                     factory.manufacture(sizepcb, "Blue");
 
                 }else if(mousebut == 1){
-                    float xpos = sf::Mouse::getPosition(window).x;
-                    float ypos = sf::Mouse::getPosition(window).y;
-                    mousebut = 0;
-                    zerner_ent.setPosition({xpos, ypos});
+                    int xpos = sf::Mouse::getPosition(window).x;
+                    int ypos = sf::Mouse::getPosition(window).y;
+                    mousebut = false;
+                    zerner_ent.setPosition({static_cast<float>(xpos), static_cast<float>(ypos)});
 
                 }
 
             }
         if(mousebut == 1){
-            zerner_ent.setPosition({sf::Mouse::getPosition(window).x, sf::Mouse::getPosition(window).y});
+            zerner_ent.setPosition({static_cast<float>(sf::Mouse::getPosition(window).x), static_cast<float>(sf::Mouse::getPosition(window).y)});
         }
 
 
@@ -175,6 +182,7 @@ void OpenWindow(){
          btn.drawTo(window);
          btn1.drawTo(window);
         btn2.drawTo(window);
+        btn3.drawTo(window);
         pcbBig.drawTo(window);
         pcbMed.drawTo(window);
         pcbSmall.drawTo(window);

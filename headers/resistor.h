@@ -13,8 +13,9 @@ class resistor {
     std::string smd_size;
 
 public:
-    resistor(int resistance, std::string smd_size);
-    int rescalc(const power_in<int>& usb, int consumer);
+    [[maybe_unused]] resistor(int resistance, std::string smd_size);
+
+    [[maybe_unused]] int rescalc(const power_in<int>& usb, int consumer);
     friend std::ostream &operator<<(std::ostream &os, const resistor &resistor);
 };
 

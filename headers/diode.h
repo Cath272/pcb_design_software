@@ -19,7 +19,7 @@ public:
     friend std::ostream &operator<<(std::ostream &os, const diode &diode);
     explicit diode(std::string smdSize);
 
-    [[nodiscard]] virtual double PowerSum() const;
+    [[maybe_unused]] [[nodiscard]] virtual double PowerSum() const;
 };
 
 class zener_diode  : public diode{

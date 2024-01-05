@@ -16,7 +16,7 @@ std::ostream &operator<<(std::ostream &os, const diode &diode) {
 }
 
 //Function that calculates the Power consumed by the diode
-double diode::PowerSum() const{
+[[maybe_unused]] double diode::PowerSum() const{
     return fwVoltage * fwCurrent;
 }
 
