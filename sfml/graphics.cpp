@@ -137,7 +137,7 @@ void OpenWindow(){
 
 
                 }else if(btn3.isMouseOver(window)){
-                    power_in<float> usb2 ("usb_c", 5, 1.2);
+                    power_in<double> usb2 ("usb_c", 5, 1.2);
                     usb2.port_select();
 
                 }else if(pcbBig.isMouseOver(window)){
